@@ -1,4 +1,4 @@
-<?php 
+<?php
 
   abstract class AnimalAbstract
   {
@@ -52,7 +52,7 @@
   */
   class PetAnimalFactory implements AnimalFactoryInterface
   {
-  	public static function factory($animal) 
+  	public static function factory($animal)
   	{
   		switch ($animal) {
   			case 'cat':
@@ -74,7 +74,7 @@
   */
   class FarmAnimalFactory implements AnimalFactoryInterface
   {
-  	public static function factory($animal) 
+  	public static function factory($animal)
   	{
   		switch ($animal) {
   			case 'pig':
@@ -96,7 +96,7 @@
   */
   class SafariAnimalFactory implements AnimalFactoryInterface
   {
-  	public static function factory($animal) 
+  	public static function factory($animal)
   	{
   		switch ($animal) {
   			case 'zebra':
@@ -112,6 +112,20 @@
   		return $obj;
   	}
   }
+
+  // ** Factory method
+  //
+  // Has multiple factories. This is useful if you have a large amount of
+  // product classes and want to group them.
+  //
+  // ** Rules
+  //
+  // 1. Each factory you create e.g. PetAnimalFactory and FarmAnimalFactory,
+  // must implement a factory interface, making them polymorphic.
+  // 2. Each product class (here these are the animals) you create must also
+  // implement an animal interface, making them polymorphic too.
+  // 3. Each factory must have a factory method which will return an animal
+  // instance.
 
   try {
   	$cat = PetAnimalFactory::factory('cat');
